@@ -12,7 +12,7 @@ export default function Hero() {
         alt="Hero background"
         fill
         priority
-        className="object-cover object-center"
+        className="object-cover object-center blur-[2px]"
         suppressHydrationWarning
       />
 
@@ -20,14 +20,14 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/55" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center bg-black/60 p-8 rounded-4xl">
         <p className="text-sm font-mono text-zinc-400 mb-4 tracking-widest uppercase">
           Hallo, ich bin
         </p>
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
-          Dein Name
+          Sven Nowitzky
         </h1>
-        <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-xl">
+        <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl">
           Web-Entwickler · Full-Stack · Open-Source-Enthusiast
         </p>
         <div className="flex gap-4">
