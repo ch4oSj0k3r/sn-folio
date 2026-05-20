@@ -1,4 +1,4 @@
-# snPage — Personal Developer Homepage
+# sn-folio — Personal Developer Homepage
 
 Eine persönliche Homepage als Web-Entwickler.
 
@@ -23,7 +23,7 @@ Eine persönliche Homepage als Web-Entwickler.
 ## Projektstruktur
 
 ```
-snPage/
+sn-folio/
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx        # Root Layout
@@ -66,7 +66,7 @@ docker compose down
 ### 1. Image für ARM64 bauen
 
 ```bash
-docker buildx build --platform linux/arm64 -t snpage:latest --load .
+docker buildx build --platform linux/arm64 -t sn-folio:latest --load .
 ```
 
 > Voraussetzung: `docker buildx` ist eingerichtet und ein ARM64-Builder ist aktiv.  
@@ -76,19 +76,19 @@ docker buildx build --platform linux/arm64 -t snpage:latest --load .
 
 ```bash
 # Image als Tarball speichern
-docker save snpage:latest | gzip > snpage.tar.gz
+docker save sn-folio:latest | gzip > sn-folio.tar.gz
 
 # Auf den Raspberry Pi übertragen
-scp snpage.tar.gz pi@<PI_IP>:/home/pi/snpage/
+scp sn-folio.tar.gz pi@<PI_IP>:/home/pi/sn-folio/
 
 # Auf dem Pi: Image laden
-ssh pi@<PI_IP> "docker load < /home/pi/snpage/snpage.tar.gz"
+ssh pi@<PI_IP> "docker load < /home/pi/sn-folio/sn-folio.tar.gz"
 ```
 
 ### 3. Container auf dem Pi starten
 
 ```bash
-ssh pi@<PI_IP> "cd /home/pi/snpage && docker compose -f docker-compose.prod.yml up -d"
+ssh pi@<PI_IP> "cd /home/pi/sn-folio && docker compose -f docker-compose.prod.yml up -d"
 ```
 
 ## Umgebungsvariablen
@@ -104,7 +104,7 @@ Lokale Overrides in `.env.local` (nicht ins Repository einchecken).
 
 ```bash
 # 1. Repository klonen
-git clone <repo-url> snPage && cd snPage
+git clone <repo-url> sn-folio && cd sn-folio
 
 # 2. Dev-Container starten
 docker compose up

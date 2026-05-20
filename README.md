@@ -1,4 +1,4 @@
-# snPage — Personal Developer Homepage
+# sn-folio — Personal Developer Homepage
 
 Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tailwind CSS. Die Seite ist als Single-Page-Application aufgebaut und besteht aus den Sektionen Hero, About, Skills, Projects und Experience.
 
@@ -49,15 +49,15 @@ npm run dev   # http://localhost:3000
 
 ```bash
 # Image für ARM64 bauen
-docker buildx build --platform linux/arm64 -t snpage:latest --load .
+docker buildx build --platform linux/arm64 -t sn-folio:latest --load .
 
 # Image exportieren und übertragen
-docker save snpage:latest | gzip > snpage.tar.gz
-scp snpage.tar.gz pi@<PI_IP>:/home/pi/snpage/
+docker save sn-folio:latest | gzip > sn-folio.tar.gz
+scp sn-folio.tar.gz pi@<PI_IP>:/home/pi/sn-folio/
 
 # Auf dem Pi laden und starten
-ssh pi@<PI_IP> "docker load < /home/pi/snpage/snpage.tar.gz"
-ssh pi@<PI_IP> "cd /home/pi/snpage && docker compose -f docker-compose.prod.yml up -d"
+ssh pi@<PI_IP> "docker load < /home/pi/sn-folio/sn-folio.tar.gz"
+ssh pi@<PI_IP> "cd /home/pi/sn-folio && docker compose -f docker-compose.prod.yml up -d"
 ```
 
 Der Produktions-Container läuft auf Port `3000` und als non-root User (`nextjs`, UID 1001).
@@ -75,7 +75,7 @@ Lokale Overrides in `.env.local` (wird nicht ins Repository committed).
 ## Projektstruktur
 
 ```
-snPage/
+sn-folio/
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx          # Root Layout, Fonts, Metadaten
