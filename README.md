@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# snPage — Personal Developer Homepage
 
-## Getting Started
+Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tailwind CSS.
 
-First, run the development server:
+## Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Sprache:** TypeScript
+- **Styling:** Tailwind CSS
+- **Containerisierung:** Docker (Multi-Stage, ARM64)
+
+## Lokale Entwicklung
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Die App ist unter [http://localhost:3005](http://localhost:3005) erreichbar.  
+Hot Reload ist via Volume-Mount aktiv.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+docker compose down
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment (Raspberry Pi)
 
-## Learn More
+```bash
+# Image für ARM64 bauen
+docker buildx build --platform linux/arm64 -t snpage:latest --load .
 
-To learn more about Next.js, take a look at the following resources:
+# Image exportieren und übertragen
+docker save snpage:latest | gzip > snpage.tar.gz
+scp snpage.tar.gz pi@<PI_IP>:/home/pi/snpage/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Auf dem Pi laden und starten
+ssh pi@<PI_IP> "docker load < /home/pi/snpage/snpage.tar.gz"
+ssh pi@<PI_IP> "cd /home/pi/snpage && docker compose -f docker-compose.prod.yml up -d"
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Projektstruktur
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+└── components/
+    └── sections/
+        ├── Hero.tsx
+        ├── About.tsx
+        ├── Skills.tsx
+        ├── Projects.tsx
+        └── Experience.tsx
+```
