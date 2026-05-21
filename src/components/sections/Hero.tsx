@@ -33,7 +33,7 @@ export default function Hero() {
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
                     Sven Nowitzky
                 </h1>
-                <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl min-h-[2rem]">
+                <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl min-h-8">
                     <TypeAnimation
                         sequence={[
                             'Web-Entwickler · Full-Stack · React-Enthusiast',
@@ -45,7 +45,10 @@ export default function Hero() {
                         style={{ display: 'inline' }}
                     />
                     <span
-                        className={`inline-block w-[2px] h-[1.2em] ml-1 align-middle bg-zinc-300 transition-opacity duration-500 ${typingDone ? 'opacity-0' : 'animate-pulse'}`}
+                        className={`inline-block w-0.5 h-5 ml-1 align-middle bg-zinc-300 transition-opacity duration-500 ${typingDone ? 'opacity-0' : ''}`}
+                        style={
+                            !typingDone ? { animation: 'blink 1.1s step-end infinite' } : undefined
+                        }
                     />
                 </p>
                 <div className="flex gap-4">
