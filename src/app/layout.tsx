@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: 'Sven Nowitzky — Web-Entwickler',
     description: 'Portfolio von Sven Nowitzky, Web-Entwickler.',
+    metadataBase: new URL('https://sn-folio.netlify.app'),
 };
 
 export default function RootLayout({
