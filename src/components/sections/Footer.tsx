@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
     const links = [
         {
@@ -34,20 +36,29 @@ export default function Footer() {
         <footer className="py-10 px-6 border-t border-zinc-800 mt-12">
             <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p className="text-zinc-500 text-sm">© {new Date().getFullYear()} Sven Nowitzky</p>
-                <div className="flex items-center gap-4">
-                    {links.map(({ label, href, icon }) => (
-                        <a
-                            key={label}
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={label}
-                            className="flex items-center gap-2 text-zinc-400 hover:text-indigo-400 transition-colors text-sm"
-                        >
-                            {icon}
-                            {label}
-                        </a>
-                    ))}
+                <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-4">
+                        {links.map(({ label, href, icon }) => (
+                            <a
+                                key={label}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={label}
+                                className="flex items-center gap-2 text-zinc-400 hover:text-indigo-400 transition-colors text-sm"
+                            >
+                                {icon}
+                                {label}
+                            </a>
+                        ))}
+                    </div>
+                    <span className="text-zinc-700">|</span>
+                    <Link
+                        href="/impressum"
+                        className="text-zinc-400 hover:text-indigo-400 transition-colors text-sm"
+                    >
+                        Impressum
+                    </Link>
                 </div>
             </div>
         </footer>
