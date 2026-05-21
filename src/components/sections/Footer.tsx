@@ -33,7 +33,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="py-10 px-6 border-t border-zinc-800 mt-12">
+        <footer id="footer" className="py-10 px-6 border-t border-zinc-800 mt-12">
             <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p className="text-zinc-500 text-sm">© {new Date().getFullYear()} Sven Nowitzky</p>
                 <div className="flex items-center gap-6">

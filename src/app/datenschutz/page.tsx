@@ -11,7 +11,7 @@ export default function DatenschutzPage() {
         <>
             <main className="max-w-2xl mx-auto px-6 py-24">
                 <Link
-                    href="/"
+                    href="/#footer"
                     className="inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-indigo-400 transition-colors mb-12"
                 >
                     ← Zurück
@@ -24,19 +24,20 @@ export default function DatenschutzPage() {
                         1. Verantwortlicher
                     </h2>
                     <p className="text-zinc-300 leading-relaxed">
-                        Vorname Nachname
+                        Sven Nowitzky
                         <br />
-                        Musterstraße 1<br />
-                        12345 Musterstadt
+                        Friedrichstraße 25
+                        <br />
+                        45899 Gelsenkirchen
                         <br />
                         Deutschland
                         <br />
                         E-Mail:{' '}
                         <a
-                            href="mailto:mail@example.com"
+                            href="mailto:s.nowitzky@outlook.de"
                             className="text-indigo-400 hover:text-indigo-300 transition-colors"
                         >
-                            mail@example.com
+                            s.nowitzky@outlook.de
                         </a>
                     </p>
                 </section>
