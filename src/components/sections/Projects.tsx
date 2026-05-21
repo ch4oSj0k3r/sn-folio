@@ -2,7 +2,7 @@ import FadeIn from '@/components/FadeIn';
 
 const projects = [
     {
-        title: 'hihPlaner',
+        title: 'HiH Planer',
         description:
             'Webbasiertes Planungstool für Termine und Mitarbeiter. Rollenbasierte Zugangskontrolle für Arbeitgeber und Mitarbeiter, Kundenstamm, Urlaubsverwaltung und Kalenderansicht. Entwickelt nach Clean Architecture mit umfassender Testabdeckung.',
         tags: ['Next.js', 'TypeScript', 'Prisma', 'MySQL', 'Docker', 'Playwright'],
@@ -10,10 +10,10 @@ const projects = [
         wip: false,
     },
     {
-        title: 'nordsternApp',
+        title: 'Nordstern WebApp',
         description:
             'Vereins-App für eine Dart-Mannschaft. Verwaltung von Saisons, Spielen und Tabellen sowie detaillierte Wurfstatistiken für jeden Spieler.',
-        tags: ['Next.js', 'TypeScript'],
+        tags: ['Next.js', 'TypeScript', 'Prisma', 'MySQL'],
         href: 'https://github.com/ch4oSj0k3r/nordsternApp',
         wip: false,
     },
