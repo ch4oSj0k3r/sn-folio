@@ -33,30 +33,42 @@ export default function Hero() {
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
                     Sven Nowitzky
                 </h1>
-                <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl min-h-[2rem]">
+                <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl min-h-8">
                     <TypeAnimation
                         sequence={[
-                            'Web-Entwickler · Full-Stack · Open-Source-Enthusiast',
+                            'Web-Entwickler · Full-Stack · React-Enthusiast',
                             500,
                             () => setTypingDone(true),
                         ]}
                         speed={60}
-                        cursor={!typingDone}
+                        cursor={false}
                         style={{ display: 'inline' }}
+                    />
+                    <span
+                        className={`inline-block w-0.5 h-5 ml-1 align-middle bg-zinc-300 transition-opacity duration-500 ${typingDone ? 'opacity-0' : ''}`}
+                        style={
+                            !typingDone ? { animation: 'blink 1.1s step-end infinite' } : undefined
+                        }
                     />
                 </p>
                 <div className="flex gap-4">
                     <a
-                        href="#projects"
-                        className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors"
+                        href="#about"
+                        aria-label="Nach unten scrollen"
+                        className="animate-bounce mt-2 text-zinc-400 hover:text-white transition-colors"
                     >
-                        Meine Projekte
-                    </a>
-                    <a
-                        href="#contact"
-                        className="px-6 py-3 rounded-lg border border-zinc-400 hover:border-white text-zinc-300 hover:text-white font-medium transition-colors"
-                    >
-                        Kontakt
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="w-8 h-8"
+                        >
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </a>
                 </div>
             </div>
