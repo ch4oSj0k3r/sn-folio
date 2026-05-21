@@ -26,7 +26,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/55" />
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col items-center bg-black/60 p-8 rounded-4xl">
+            <div className="relative z-10 flex flex-col items-center bg-black/60 p-8 rounded-4xl w-full max-w-2xl">
                 <p className="text-sm font-mono text-zinc-400 mb-4 tracking-widest uppercase">
                     Hallo, ich bin
                 </p>
