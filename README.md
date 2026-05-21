@@ -4,15 +4,15 @@ Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tai
 
 ## Stack
 
-| Bereich | Technologie |
-|---|---|
-| Framework | Next.js 16 (App Router, Standalone Output) |
-| Sprache | TypeScript 5 |
-| UI | React 19 |
-| Styling | Tailwind CSS v4 |
-| Fonts | Geist Sans & Geist Mono |
-| Linting | ESLint v9 (Flat Config) |
-| Containerisierung | Docker (Multi-Stage, ARM64) |
+| Bereich           | Technologie                                |
+| ----------------- | ------------------------------------------ |
+| Framework         | Next.js 16 (App Router, Standalone Output) |
+| Sprache           | TypeScript 5                               |
+| UI                | React 19                                   |
+| Styling           | Tailwind CSS v4                            |
+| Fonts             | Geist Sans & Geist Mono                    |
+| Linting           | ESLint v9 (Flat Config)                    |
+| Containerisierung | Docker (Multi-Stage, ARM64)                |
 
 ## Lokale Entwicklung
 
@@ -38,12 +38,12 @@ npm run dev   # http://localhost:3000
 
 ## Verfügbare Scripts
 
-| Script | Beschreibung |
-|---|---|
-| `npm run dev` | Entwicklungsserver mit Hot Reload |
-| `npm run build` | Produktions-Build (Standalone) |
-| `npm start` | Produktionsserver starten |
-| `npm run lint` | ESLint ausführen |
+| Script          | Beschreibung                      |
+| --------------- | --------------------------------- |
+| `npm run dev`   | Entwicklungsserver mit Hot Reload |
+| `npm run build` | Produktions-Build (Standalone)    |
+| `npm start`     | Produktionsserver starten         |
+| `npm run lint`  | ESLint ausführen                  |
 
 ## Deployment (Raspberry Pi / ARM64)
 
@@ -66,11 +66,11 @@ Der Produktions-Container läuft auf Port `3000` und als non-root User (`nextjs`
 
 Lokale Overrides in `.env.local` (wird nicht ins Repository committed).
 
-| Variable | Beschreibung | Standard |
-|---|---|---|
-| `NODE_ENV` | Laufzeitumgebung | `production` |
-| `PORT` | Container-Port | `3000` |
-| `NEXT_TELEMETRY_DISABLED` | Next.js Telemetrie deaktivieren | `1` |
+| Variable                  | Beschreibung                    | Standard     |
+| ------------------------- | ------------------------------- | ------------ |
+| `NODE_ENV`                | Laufzeitumgebung                | `production` |
+| `PORT`                    | Container-Port                  | `3000`       |
+| `NEXT_TELEMETRY_DISABLED` | Next.js Telemetrie deaktivieren | `1`          |
 
 ## Projektstruktur
 

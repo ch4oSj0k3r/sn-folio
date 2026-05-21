@@ -4,13 +4,13 @@ Eine persönliche Homepage als Web-Entwickler.
 
 ## Tech Stack
 
-| Bereich       | Technologie                        |
-|---------------|------------------------------------|
-| Framework     | Next.js 14+ (App Router)           |
-| Sprache       | TypeScript                         |
-| Styling       | Tailwind CSS                       |
-| Laufzeit      | Node.js 20 LTS                     |
-| Containerisierung | Docker (Multi-Stage, ARM64)    |
+| Bereich           | Technologie                 |
+| ----------------- | --------------------------- |
+| Framework         | Next.js 14+ (App Router)    |
+| Sprache           | TypeScript                  |
+| Styling           | Tailwind CSS                |
+| Laufzeit          | Node.js 20 LTS              |
+| Containerisierung | Docker (Multi-Stage, ARM64) |
 
 ## Seitenstruktur
 
@@ -93,10 +93,10 @@ ssh pi@<PI_IP> "cd /home/pi/sn-folio && docker compose -f docker-compose.prod.ym
 
 ## Umgebungsvariablen
 
-| Variable       | Beschreibung                  | Standard     |
-|----------------|-------------------------------|--------------|
-| `NODE_ENV`     | Laufzeitumgebung              | `production` |
-| `PORT`         | Interner Container-Port       | `3000`       |
+| Variable   | Beschreibung            | Standard     |
+| ---------- | ----------------------- | ------------ |
+| `NODE_ENV` | Laufzeitumgebung        | `production` |
+| `PORT`     | Interner Container-Port | `3000`       |
 
 Lokale Overrides in `.env.local` (nicht ins Repository einchecken).
 

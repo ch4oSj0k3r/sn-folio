@@ -1,15 +1,15 @@
 services:
-  web:
-    image: node:20-alpine
-    working_dir: /app
-    command: sh -c "npm install && npm run dev"
-    ports:
-      - "3005:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next
-    environment:
-      - NODE_ENV=development
-      - NEXT_TELEMETRY_DISABLED=1
-    restart: unless-stopped
+    web:
+        image: node:20-alpine
+        working_dir: /app
+        command: sh -c "npm install && npm run dev"
+        ports:
+            - '3005:3000'
+        volumes:
+            - .:/app
+            - /app/node_modules
+            - /app/.next
+        environment:
+            - NODE_ENV=development
+            - NEXT_TELEMETRY_DISABLED=1
+        restart: unless-stopped
