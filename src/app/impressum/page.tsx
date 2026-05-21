@@ -15,13 +15,15 @@ export default function ImpressumPage() {
 
                 <section className="mb-10">
                     <h2 className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">
-                        Angaben gemäß § 5 TMG
+                        Angaben gemäß § 5 DDG
                     </h2>
                     <p className="text-zinc-300 leading-relaxed">
                         Vorname Nachname
                         <br />
                         Musterstraße 1<br />
                         12345 Musterstadt
+                        <br />
+                        Deutschland
                     </p>
                 </section>
 
@@ -42,14 +44,24 @@ export default function ImpressumPage() {
 
                 <section className="mb-10">
                     <h2 className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">
+                        Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+                    </h2>
+                    <p className="text-zinc-300 leading-relaxed">
+                        Vorname Nachname
+                        <br />
+                        Adresse wie oben
+                    </p>
+                </section>
+
+                <section className="mb-10">
+                    <h2 className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">
                         Haftung für Inhalte
                     </h2>
                     <p className="text-zinc-400 leading-relaxed text-sm">
-                        Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf
-                        diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10
-                        TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
-                        gespeicherte fremde Informationen zu überwachen oder nach Umständen zu
-                        forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                        Als Diensteanbieter bin ich gemäß den allgemeinen Gesetzen für eigene
+                        Inhalte auf diesen Seiten verantwortlich. Trotz sorgfältiger inhaltlicher
+                        Kontrolle übernehme ich keine Gewähr für die Aktualität, Vollständigkeit
+                        oder Richtigkeit der bereitgestellten Inhalte.
                     </p>
                 </section>
 
@@ -58,10 +70,10 @@ export default function ImpressumPage() {
                         Haftung für Links
                     </h2>
                     <p className="text-zinc-400 leading-relaxed text-sm">
-                        Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte
-                        ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch
-                        keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der
-                        jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                        Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte
+                        ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte keine
+                        Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der
+                        jeweilige Anbieter oder Betreiber verantwortlich.
                     </p>
                 </section>
 
@@ -70,11 +82,9 @@ export default function ImpressumPage() {
                         Urheberrecht
                     </h2>
                     <p className="text-zinc-400 leading-relaxed text-sm">
-                        Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
-                        unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung,
-                        Verbreitung und jede Art der Verwertung außerhalb der Grenzen des
-                        Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors
-                        bzw. Erstellers.
+                        Die auf dieser Website veröffentlichten Inhalte und Werke unterliegen dem
+                        deutschen Urheberrecht. Jede Art der Verwertung außerhalb der Grenzen des
+                        Urheberrechts bedarf der vorherigen schriftlichen Zustimmung.
                     </p>
                 </section>
             </main>
