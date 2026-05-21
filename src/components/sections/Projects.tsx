@@ -2,25 +2,18 @@ import FadeIn from '@/components/FadeIn';
 
 const projects = [
     {
-        title: 'Projekt Alpha',
+        title: 'hihPlaner',
         description:
-            'Kurze Beschreibung des Projekts — was es macht, welche Technologien verwendet wurden und was besonders daran ist.',
-        tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
-        href: '#',
+            'Webbasiertes Planungstool für Termine und Mitarbeiter. Rollenbasierte Zugangskontrolle für Arbeitgeber und Mitarbeiter, Kundenstamm, Urlaubsverwaltung und Kalenderansicht. Entwickelt nach Clean Architecture mit umfassender Testabdeckung.',
+        tags: ['Next.js', 'TypeScript', 'Prisma', 'MySQL', 'Docker', 'Playwright'],
+        href: 'https://github.com/ch4oSj0k3r/hihPlaner',
     },
     {
-        title: 'Projekt Beta',
+        title: 'nordsternApp',
         description:
-            'Kurze Beschreibung des Projekts — was es macht, welche Technologien verwendet wurden und was besonders daran ist.',
-        tags: ['React', 'Node.js', 'Docker'],
-        href: '#',
-    },
-    {
-        title: 'Projekt Gamma',
-        description:
-            'Kurze Beschreibung des Projekts — was es macht, welche Technologien verwendet wurden und was besonders daran ist.',
-        tags: ['Tailwind CSS', 'REST API', 'Linux'],
-        href: '#',
+            'Vereins-App für eine Dart-Mannschaft. Verwaltung von Saisons, Spielen und Tabellen sowie detaillierte Wurfstatistiken für jeden Spieler.',
+        tags: ['Next.js', 'TypeScript'],
+        href: 'https://github.com/ch4oSj0k3r/nordsternApp',
     },
 ];
 
@@ -29,7 +22,7 @@ export default function Projects() {
         <FadeIn>
             <section id="projects" className="py-24 px-6 max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-zinc-100 mb-12">Projekte</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 gap-6">
                     {projects.map((project) => (
                         <a
                             key={project.title}
