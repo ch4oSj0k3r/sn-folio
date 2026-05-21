@@ -12,7 +12,7 @@ export default function Hero() {
         alt="Hero background"
         fill
         priority
-        className="object-cover object-center blur-[2px]"
+        className="object-cover object-center"
         suppressHydrationWarning
       />
 
