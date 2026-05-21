@@ -15,6 +15,30 @@ Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tai
 | Formatting | Prettier                |
 | Deployment | Netlify                 |
 
+## Branching-Strategie
+
+| Branch      | Zweck                                              |
+| ----------- | -------------------------------------------------- |
+| `main`      | Protected — Netlify deployed automatisch bei Merge |
+| `feature/*` | Feature-Branches, Basis: `main`, via PR in `main`  |
+
+### Workflow
+
+```bash
+# 1. Feature-Branch erstellen
+git checkout -b feature/mein-feature
+
+# 2. Entwickeln & committen
+git add .
+git commit -m "feat: ..."
+
+# 3. Branch pushen
+git push -u origin feature/mein-feature
+
+# 4. Pull Request auf GitHub: feature/* → main
+# 5. Nach Merge deployed Netlify automatisch
+```
+
 ## Lokale Entwicklung
 
 ### Mit Docker (empfohlen)

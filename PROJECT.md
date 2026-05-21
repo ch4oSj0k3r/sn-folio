@@ -97,14 +97,23 @@ Produktions-Variablen in Netlify unter **Site settings → Environment variables
 ## Entwicklungs-Workflow
 
 ```bash
-# 1. Repository klonen
-git clone <repo-url> sn-folio && cd sn-folio
+# 1. Feature-Branch von main erstellen
+git checkout -b feature/name
 
-# 2. Dev-Container starten
-docker compose up
+# 2. Entwickeln & committen
+git add .
+git commit -m "feat: ..."
 
-# 3. Änderungen vornehmen — Hot Reload ist aktiv
+# 3. Branch pushen & PR stellen
+git push -u origin feature/name
+# → Pull Request: feature/* → main
 
-# 4. Vor dem Merge: Build lokal prüfen
-npm run build
+# 4. Nach Merge deployed Netlify automatisch
 ```
+
+### Branching-Strategie
+
+| Branch      | Zweck                                              |
+| ----------- | -------------------------------------------------- |
+| `main`      | Protected — Netlify deployed automatisch bei Merge |
+| `feature/*` | Feature-Branches, Basis: `main`, via PR in `main`  |
