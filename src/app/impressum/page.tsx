@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import Link from 'next/link';
 import Footer from '@/components/sections/Footer';
 import type { Metadata } from 'next';
 
@@ -9,8 +9,14 @@ export const metadata: Metadata = {
 export default function ImpressumPage() {
     return (
         <>
-            <Navbar />
             <main className="max-w-2xl mx-auto px-6 py-24">
+                <Link
+                    href="/"
+                    className="inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-indigo-400 transition-colors mb-12"
+                >
+                    ← Zurück
+                </Link>
+
                 <h1 className="text-3xl font-bold text-zinc-100 mb-12">Impressum</h1>
 
                 <section className="mb-10">
