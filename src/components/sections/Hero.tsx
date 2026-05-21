@@ -36,13 +36,16 @@ export default function Hero() {
                 <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl min-h-[2rem]">
                     <TypeAnimation
                         sequence={[
-                            'Web-Entwickler · Full-Stack · Open-Source-Enthusiast',
+                            'Web-Entwickler · Full-Stack · React-Enthusiast',
                             500,
                             () => setTypingDone(true),
                         ]}
                         speed={60}
-                        cursor={!typingDone}
+                        cursor={false}
                         style={{ display: 'inline' }}
+                    />
+                    <span
+                        className={`inline-block w-[2px] h-[1.2em] ml-1 align-middle bg-zinc-300 transition-opacity duration-500 ${typingDone ? 'opacity-0' : 'animate-pulse'}`}
                     />
                 </p>
                 <div className="flex gap-4">
