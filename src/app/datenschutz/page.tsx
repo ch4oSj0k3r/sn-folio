@@ -42,13 +42,17 @@ export default function DatenschutzPage() {
                     <p className="text-zinc-400 leading-relaxed text-sm">
                         Diese Website wird auf einem eigenen Server gehostet. Der Hosting-Anbieter
                         erhebt automatisch sogenannte Server-Log-Dateien, die Ihr Browser
-                        übermittelt. Dazu gehören IP-Adresse, Datum und Uhrzeit des Zugriffs,
-                        aufgerufene Seite, Browsertyp und Betriebssystem.
+                        übermittelt. Dazu gehören insbesondere IP-Adresse, Datum und Uhrzeit des
+                        Zugriffs, aufgerufene Seiten, Browsertyp sowie das verwendete
+                        Betriebssystem.
                     </p>
                     <p className="text-zinc-400 leading-relaxed text-sm mt-3">
-                        Diese Daten werden nicht mit anderen Datenquellen zusammengeführt.
-                        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
-                        einem sicheren und stabilen Betrieb der Website).
+                        Die Verarbeitung dieser Daten erfolgt zur Gewährleistung eines sicheren und
+                        stabilen Betriebs der Website. Eine Zusammenführung dieser Daten mit anderen
+                        Datenquellen erfolgt nicht.
+                    </p>
+                    <p className="text-zinc-400 leading-relaxed text-sm mt-3">
+                        Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO.
                     </p>
                 </section>
 
@@ -68,10 +72,10 @@ export default function DatenschutzPage() {
                         4. Externe Links
                     </h2>
                     <p className="text-zinc-400 leading-relaxed text-sm">
-                        Diese Website enthält Links zu externen Diensten (LinkedIn, Xing). Beim
-                        Klick auf diese Links verlassen Sie diese Website. Für die Datenverarbeitung
-                        auf den verlinkten Seiten sind die jeweiligen Anbieter verantwortlich. Ich
-                        habe keinen Einfluss auf deren Datenschutzpraktiken.
+                        Diese Website enthält Links zu externen Diensten (LinkedIn, XING). Beim
+                        Anklicken dieser Links verlassen Sie diese Website. Für die
+                        Datenverarbeitung auf den verlinkten Seiten sind ausschließlich deren
+                        Betreiber verantwortlich.
                     </p>
                 </section>
 
