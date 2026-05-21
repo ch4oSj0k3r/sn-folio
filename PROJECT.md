@@ -1,26 +1,32 @@
 # sn-folio — Personal Developer Homepage
 
-Eine persönliche Homepage als Web-Entwickler.
+Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tailwind CSS. Die Seite ist als Single-Page-Application aufgebaut und besteht aus den Sektionen Hero, About, Skills, Projects, References und Experience.
 
-## Tech Stack
+## Stack
 
-| Bereich    | Technologie             |
-| ---------- | ----------------------- |
-| Framework  | Next.js 16 (App Router) |
-| Sprache    | TypeScript 5            |
-| UI         | React 19                |
-| Styling    | Tailwind CSS v4         |
-| Laufzeit   | Node.js 20 LTS          |
-| Deployment | Netlify                 |
+| Bereich     | Technologie             |
+| ----------- | ----------------------- |
+| Framework   | Next.js 16 (App Router) |
+| Sprache     | TypeScript 5            |
+| UI          | React 19                |
+| Styling     | Tailwind CSS v4         |
+| Animationen | Framer Motion           |
+| Fonts       | Geist Sans & Geist Mono |
+| Linting     | ESLint v9 (Flat Config) |
+| Formatting  | Prettier                |
+| Deployment  | Netlify                 |
 
 ## Seitenstruktur
 
-- **Hero / Intro** — Begrüßung, Name, Tagline, CTA
-- **Über mich** — Kurze Biografie und Persönlichkeit
-- **Skills / Technologien** — Tech-Stack und Kenntnisse
-- **Projekte / Portfolio** — Showcase eigener Arbeiten
-- **Erfahrung / CV** — Beruflicher Werdegang
-- **Impressum / Datenschutz** — Rechtliche Seiten
+| Sektion    | Beschreibung                                            |
+| ---------- | ------------------------------------------------------- |
+| Hero       | Fullscreen-Intro mit Typing-Effekt und Scroll-Pfeil     |
+| About      | Kurze Biografie, Zertifikate-Badges                     |
+| Skills     | Tech-Stack im 2×3-Grid                                  |
+| Projects   | Eigene Projekte mit GitHub-Links, WIP-Badge             |
+| Experience | Karriere-Timeline                                       |
+| References | Berufliche Referenzprojekte, gruppiert nach Arbeitgeber |
+| Footer     | LinkedIn, Xing, Impressum, Datenschutz                  |
 
 ## Projektstruktur
 
@@ -29,38 +35,41 @@ sn-folio/
 ├── src/
 │   ├── app/
 │   │   ├── impressum/
-│   │   │   └── page.tsx          # Impressum-Seite
+│   │   │   └── page.tsx            # Impressum-Seite
 │   │   ├── datenschutz/
-│   │   │   └── page.tsx          # Datenschutzerklärung
-│   │   ├── layout.tsx            # Root Layout
-│   │   ├── page.tsx              # Startseite (alle Sektionen)
-│   │   └── globals.css           # Globale Styles
+│   │   │   └── page.tsx            # Datenschutzerklärung
+│   │   ├── layout.tsx              # Root Layout, Fonts, Metadaten, metadataBase
+│   │   ├── page.tsx                # Single Page — alle Sektionen
+│   │   ├── globals.css             # Tailwind, Animations (gradient-shift, blink)
+│   │   └── opengraph-image.tsx     # Dynamisch generiertes OG-Image (1200×630)
 │   └── components/
+│       ├── FadeIn.tsx              # Framer Motion Scroll-Fade-Wrapper
 │       └── sections/
-│           ├── Hero.tsx
-│           ├── About.tsx
-│           ├── Skills.tsx
-│           ├── Projects.tsx
-│           ├── Experience.tsx
-│           └── Footer.tsx
-├── public/                       # Statische Assets (Bilder, Icons)
-├── docker-compose.yml            # Lokale Entwicklung
-├── netlify.toml                  # Netlify Build-Konfiguration
+│           ├── Hero.tsx            # Fullscreen Intro, Typing-Effekt, Scroll-Pfeil
+│           ├── About.tsx           # Biografie, Badges
+│           ├── Skills.tsx          # Skills-Grid
+│           ├── Projects.tsx        # Projekt-Karten (inkl. WIP-Karte)
+│           ├── Experience.tsx      # Karriere-Timeline
+│           ├── References.tsx      # Referenzprojekte nach Arbeitgeber
+│           └── Footer.tsx          # Footer mit Links und id="footer"
+├── public/
+│   └── images/
+│       └── hero.webp
+├── docker-compose.yml               # Lokale Entwicklung (Port 3005)
+├── netlify.toml                     # Netlify Build-Konfiguration
 └── next.config.ts
 ```
 
 ## Lokale Entwicklung
 
-### Starten
+### Mit Docker (empfohlen)
 
 ```bash
 docker compose up
 ```
 
 Die App ist unter [http://localhost:3005](http://localhost:3005) erreichbar.
-Hot Reload ist via Volume-Mount aktiv — Änderungen am Code werden sofort übernommen.
-
-### Stoppen
+Hot Reload ist via Volume-Mount aktiv.
 
 ```bash
 docker compose down
@@ -73,47 +82,30 @@ npm install
 npm run dev   # http://localhost:3000
 ```
 
-## Deployment auf Netlify
+## Verfügbare Scripts
 
-### Initiales Setup (einmalig)
+| Script           | Beschreibung                      |
+| ---------------- | --------------------------------- |
+| `npm run dev`    | Entwicklungsserver mit Hot Reload |
+| `npm run build`  | Produktions-Build                 |
+| `npm start`      | Produktionsserver starten         |
+| `npm run lint`   | ESLint ausführen                  |
+| `npm run format` | Prettier auf gesamtes Projekt     |
 
-1. Unter [app.netlify.com](https://app.netlify.com) einloggen oder registrieren
-2. **"Add new site"** → **"Import an existing project"** → **GitHub** auswählen
-3. Repository `sn-folio` auswählen und Zugriff gewähren
-4. Build-Einstellungen werden automatisch aus `netlify.toml` übernommen:
-    - Build command: `npm run build`
-    - Publish directory: `.next`
-5. **"Deploy site"** klicken
+## Deployment (Netlify)
 
-### Automatisches Deployment
-
-Nach dem initialen Setup deployed Netlify automatisch bei jedem Push auf `main`.
+Nach jedem Merge auf `main` deployed Netlify automatisch.
+Deploy Previews werden automatisch für jeden Pull Request erstellt.
 
 ### Umgebungsvariablen
 
-Lokale Overrides in `.env.local` (nicht ins Repository einchecken).
-Produktions-Variablen in Netlify unter **Site settings → Environment variables** setzen.
+Lokale Overrides in `.env.local` (wird nicht ins Repository committed).
+Produktions-Variablen werden in Netlify unter **Site settings → Environment variables** gesetzt.
 
-## Entwicklungs-Workflow
+## Hinweise
 
-```bash
-# 1. Feature-Branch von main erstellen
-git checkout -b feature/name
-
-# 2. Entwickeln & committen
-git add .
-git commit -m "feat: ..."
-
-# 3. Branch pushen & PR stellen
-git push -u origin feature/name
-# → Pull Request: feature/* → main
-
-# 4. Nach Merge deployed Netlify automatisch
-```
-
-### Branching-Strategie
-
-| Branch      | Zweck                                              |
-| ----------- | -------------------------------------------------- |
-| `main`      | Protected — Netlify deployed automatisch bei Merge |
-| `feature/*` | Feature-Branches, Basis: `main`, via PR in `main`  |
+- Pfad-Alias `@/` zeigt auf `src/` (konfiguriert in `tsconfig.json`).
+- Nur Dark Theme — kein Light/Dark-Toggle.
+- Alle Inhalte (Name, Projekte, Erfahrungen) sind hardcodiert in den jeweiligen Komponenten.
+- Prettier läuft automatisch via Husky vor jedem Commit (`lint-staged`).
+- OG-Image wird zur Build-Zeit statisch generiert (`opengraph-image.tsx`).

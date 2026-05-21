@@ -1,43 +1,6 @@
-# sn-folio — Personal Developer Homepage
+# sn-folio
 
-Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tailwind CSS. Die Seite ist als Single-Page-Application aufgebaut und besteht aus den Sektionen Hero, About, Skills, Projects und Experience.
-
-## Stack
-
-| Bereich    | Technologie             |
-| ---------- | ----------------------- |
-| Framework  | Next.js 16 (App Router) |
-| Sprache    | TypeScript 5            |
-| UI         | React 19                |
-| Styling    | Tailwind CSS v4         |
-| Fonts      | Geist Sans & Geist Mono |
-| Linting    | ESLint v9 (Flat Config) |
-| Formatting | Prettier                |
-| Deployment | Netlify                 |
-
-## Branching-Strategie
-
-| Branch      | Zweck                                              |
-| ----------- | -------------------------------------------------- |
-| `main`      | Protected — Netlify deployed automatisch bei Merge |
-| `feature/*` | Feature-Branches, Basis: `main`, via PR in `main`  |
-
-### Workflow
-
-```bash
-# 1. Feature-Branch erstellen
-git checkout -b feature/mein-feature
-
-# 2. Entwickeln & committen
-git add .
-git commit -m "feat: ..."
-
-# 3. Branch pushen
-git push -u origin feature/mein-feature
-
-# 4. Pull Request auf GitHub: feature/* → main
-# 5. Nach Merge deployed Netlify automatisch
-```
+Persönliche Portfolio-Website von Sven Nowitzky, gebaut mit Next.js 16, TypeScript und Tailwind CSS. Deployed auf Netlify.
 
 ## Lokale Entwicklung
 
@@ -47,8 +10,7 @@ git push -u origin feature/mein-feature
 docker compose up
 ```
 
-Die App ist unter [http://localhost:3005](http://localhost:3005) erreichbar.
-Hot Reload ist via Volume-Mount aktiv.
+Erreichbar unter [http://localhost:3005](http://localhost:3005). Hot Reload ist aktiv.
 
 ```bash
 docker compose down
@@ -61,7 +23,7 @@ npm install
 npm run dev   # http://localhost:3000
 ```
 
-## Verfügbare Scripts
+## Scripts
 
 | Script           | Beschreibung                      |
 | ---------------- | --------------------------------- |
@@ -71,63 +33,22 @@ npm run dev   # http://localhost:3000
 | `npm run lint`   | ESLint ausführen                  |
 | `npm run format` | Prettier auf gesamtes Projekt     |
 
-## Deployment (Netlify)
+## Branching-Strategie
 
-### Initiales Setup (einmalig)
+| Branch      | Zweck                                              |
+| ----------- | -------------------------------------------------- |
+| `main`      | Protected — Netlify deployed automatisch bei Merge |
+| `feature/*` | Feature-Branches, Basis: `main`, via PR in `main`  |
 
-1. Unter [app.netlify.com](https://app.netlify.com) einloggen oder registrieren
-2. **"Add new site"** → **"Import an existing project"** → **GitHub** auswählen
-3. Repository `sn-folio` auswählen und Zugriff gewähren
-4. Build-Einstellungen werden automatisch aus `netlify.toml` übernommen:
-    - Build command: `npm run build`
-    - Publish directory: `.next`
-5. **"Deploy site"** klicken
-
-### Automatisches Deployment
-
-Nach dem initialen Setup deployed Netlify automatisch bei jedem Push auf `main`.
-
-### Umgebungsvariablen
-
-Lokale Overrides in `.env.local` (wird nicht ins Repository committed).
-Produktions-Variablen werden in Netlify unter **Site settings → Environment variables** gesetzt.
-
-| Variable                  | Beschreibung                    |
-| ------------------------- | ------------------------------- |
-| `NEXT_TELEMETRY_DISABLED` | Next.js Telemetrie deaktivieren |
-
-## Projektstruktur
-
-```
-sn-folio/
-├── src/
-│   ├── app/
-│   │   ├── impressum/
-│   │   │   └── page.tsx            # Impressum-Seite
-│   │   ├── datenschutz/
-│   │   │   └── page.tsx            # Datenschutzerklärung
-│   │   ├── layout.tsx              # Root Layout, Fonts, Metadaten
-│   │   ├── page.tsx                # Single Page — alle Sektionen
-│   │   └── globals.css             # Tailwind Direktiven
-│   └── components/
-│       └── sections/
-│           ├── Hero.tsx             # Fullscreen Intro mit CTA
-│           ├── About.tsx            # Biografie
-│           ├── Skills.tsx           # Skills-Grid
-│           ├── Projects.tsx         # Projekt-Karten
-│           ├── Experience.tsx       # Karriere-Timeline
-│           └── Footer.tsx           # Footer mit Links
-├── public/
-│   └── images/
-│       └── hero.webp
-├── docker-compose.yml               # Lokale Entwicklung (Port 3005)
-├── netlify.toml                     # Netlify Build-Konfiguration
-└── next.config.ts
+```bash
+git checkout -b feature/name
+git commit -m "feat: ..."
+git push -u origin feature/name
+# → Pull Request auf GitHub: feature/* → main
 ```
 
-## Hinweise
+## Deployment
 
-- Pfad-Alias `@/` zeigt auf `src/` (konfiguriert in `tsconfig.json`).
-- Nur Dark Theme — kein Light/Dark-Toggle.
-- Alle Inhalte (Name, Projekte, Erfahrungen) sind hardcodiert in den jeweiligen Komponenten.
-- Prettier läuft automatisch via Husky vor jedem Commit (`lint-staged`).
+Netlify deployed automatisch bei jedem Merge auf `main`. Deploy Previews werden für jeden PR erstellt.
+
+Weitere Details siehe [PROJECT.md](./PROJECT.md).
