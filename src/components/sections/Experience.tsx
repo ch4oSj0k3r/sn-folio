@@ -57,16 +57,13 @@ export default function Experience() {
                         <p className="text-xs font-mono text-zinc-500 mb-1">{exp.period}</p>
                         <h3 className="text-lg font-semibold text-zinc-100">{exp.role}</h3>
                         <p className="text-indigo-400 text-sm mb-2">{exp.company}</p>
-                        {Array.isArray(exp.description) ? (
-                            <ul className="list-disc list-inside text-zinc-400 leading-relaxed whitespace-pre-line">
+                        {exp.description && (
+                            <ul className="list-disc list-inside text-zinc-400 leading-relaxed">
                                 {exp.description.map((desc, index) => (
                                     <li key={index}>{desc}</li>
                                 ))}
                             </ul>
-                        ) : (
-                            exp.description
                         )}
-                        {/*<p className="text-zinc-400 leading-relaxed whitespace-pre-line">{exp.description}</p>*/}
                     </div>
                 ))}
             </div>
