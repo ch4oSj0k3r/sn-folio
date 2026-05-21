@@ -4,13 +4,14 @@ Eine persönliche Homepage als Web-Entwickler.
 
 ## Tech Stack
 
-| Bereich           | Technologie                 |
-| ----------------- | --------------------------- |
-| Framework         | Next.js 14+ (App Router)    |
-| Sprache           | TypeScript                  |
-| Styling           | Tailwind CSS                |
-| Laufzeit          | Node.js 20 LTS              |
-| Containerisierung | Docker (Multi-Stage, ARM64) |
+| Bereich    | Technologie             |
+| ---------- | ----------------------- |
+| Framework  | Next.js 16 (App Router) |
+| Sprache    | TypeScript 5            |
+| UI         | React 19                |
+| Styling    | Tailwind CSS v4         |
+| Laufzeit   | Node.js 20 LTS          |
+| Deployment | Netlify                 |
 
 ## Seitenstruktur
 
@@ -19,6 +20,7 @@ Eine persönliche Homepage als Web-Entwickler.
 - **Skills / Technologien** — Tech-Stack und Kenntnisse
 - **Projekte / Portfolio** — Showcase eigener Arbeiten
 - **Erfahrung / CV** — Beruflicher Werdegang
+- **Impressum / Datenschutz** — Rechtliche Seiten
 
 ## Projektstruktur
 
@@ -26,25 +28,28 @@ Eine persönliche Homepage als Web-Entwickler.
 sn-folio/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx        # Root Layout
-│   │   ├── page.tsx          # Startseite (alle Sektionen)
-│   │   └── globals.css       # Globale Styles
+│   │   ├── impressum/
+│   │   │   └── page.tsx          # Impressum-Seite
+│   │   ├── datenschutz/
+│   │   │   └── page.tsx          # Datenschutzerklärung
+│   │   ├── layout.tsx            # Root Layout
+│   │   ├── page.tsx              # Startseite (alle Sektionen)
+│   │   └── globals.css           # Globale Styles
 │   └── components/
-│       ├── sections/
-│       │   ├── Hero.tsx
-│       │   ├── About.tsx
-│       │   ├── Skills.tsx
-│       │   ├── Projects.tsx
-│       │   └── Experience.tsx
-│       └── ui/               # Wiederverwendbare UI-Komponenten
-├── public/                   # Statische Assets (Bilder, Icons)
-├── Dockerfile                # Multi-Stage Production Build
-├── docker-compose.yml        # Lokale Entwicklung
-├── docker-compose.prod.yml   # Produktion
-└── PROJECT.md
+│       └── sections/
+│           ├── Hero.tsx
+│           ├── About.tsx
+│           ├── Skills.tsx
+│           ├── Projects.tsx
+│           ├── Experience.tsx
+│           └── Footer.tsx
+├── public/                       # Statische Assets (Bilder, Icons)
+├── docker-compose.yml            # Lokale Entwicklung
+├── netlify.toml                  # Netlify Build-Konfiguration
+└── next.config.ts
 ```
 
-## Docker — Lokale Entwicklung
+## Lokale Entwicklung
 
 ### Starten
 
@@ -52,7 +57,7 @@ sn-folio/
 docker compose up
 ```
 
-Die App ist unter [http://localhost:3000](http://localhost:3000) erreichbar.  
+Die App ist unter [http://localhost:3005](http://localhost:3005) erreichbar.
 Hot Reload ist via Volume-Mount aktiv — Änderungen am Code werden sofort übernommen.
 
 ### Stoppen
@@ -61,44 +66,33 @@ Hot Reload ist via Volume-Mount aktiv — Änderungen am Code werden sofort übe
 docker compose down
 ```
 
-## Docker — Deployment auf Raspberry Pi
-
-### 1. Image für ARM64 bauen
+### Ohne Docker
 
 ```bash
-docker buildx build --platform linux/arm64 -t sn-folio:latest --load .
+npm install
+npm run dev   # http://localhost:3000
 ```
 
-> Voraussetzung: `docker buildx` ist eingerichtet und ein ARM64-Builder ist aktiv.  
-> Alternativ direkt auf dem Pi bauen (ohne `--platform`-Flag).
+## Deployment auf Netlify
 
-### 2. Image exportieren und übertragen
+### Initiales Setup (einmalig)
 
-```bash
-# Image als Tarball speichern
-docker save sn-folio:latest | gzip > sn-folio.tar.gz
+1. Unter [app.netlify.com](https://app.netlify.com) einloggen oder registrieren
+2. **"Add new site"** → **"Import an existing project"** → **GitHub** auswählen
+3. Repository `sn-folio` auswählen und Zugriff gewähren
+4. Build-Einstellungen werden automatisch aus `netlify.toml` übernommen:
+    - Build command: `npm run build`
+    - Publish directory: `.next`
+5. **"Deploy site"** klicken
 
-# Auf den Raspberry Pi übertragen
-scp sn-folio.tar.gz pi@<PI_IP>:/home/pi/sn-folio/
+### Automatisches Deployment
 
-# Auf dem Pi: Image laden
-ssh pi@<PI_IP> "docker load < /home/pi/sn-folio/sn-folio.tar.gz"
-```
+Nach dem initialen Setup deployed Netlify automatisch bei jedem Push auf `main`.
 
-### 3. Container auf dem Pi starten
-
-```bash
-ssh pi@<PI_IP> "cd /home/pi/sn-folio && docker compose -f docker-compose.prod.yml up -d"
-```
-
-## Umgebungsvariablen
-
-| Variable   | Beschreibung            | Standard     |
-| ---------- | ----------------------- | ------------ |
-| `NODE_ENV` | Laufzeitumgebung        | `production` |
-| `PORT`     | Interner Container-Port | `3000`       |
+### Umgebungsvariablen
 
 Lokale Overrides in `.env.local` (nicht ins Repository einchecken).
+Produktions-Variablen in Netlify unter **Site settings → Environment variables** setzen.
 
 ## Entwicklungs-Workflow
 
@@ -111,6 +105,6 @@ docker compose up
 
 # 3. Änderungen vornehmen — Hot Reload ist aktiv
 
-# 4. Vor dem Deployment: Production-Build lokal testen
-docker compose -f docker-compose.prod.yml up --build
+# 4. Vor dem Merge: Build lokal prüfen
+npm run build
 ```

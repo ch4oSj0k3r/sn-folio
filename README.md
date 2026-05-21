@@ -4,15 +4,16 @@ Persönliche Homepage als Web-Entwickler, gebaut mit Next.js, TypeScript und Tai
 
 ## Stack
 
-| Bereich           | Technologie                                |
-| ----------------- | ------------------------------------------ |
-| Framework         | Next.js 16 (App Router, Standalone Output) |
-| Sprache           | TypeScript 5                               |
-| UI                | React 19                                   |
-| Styling           | Tailwind CSS v4                            |
-| Fonts             | Geist Sans & Geist Mono                    |
-| Linting           | ESLint v9 (Flat Config)                    |
-| Containerisierung | Docker (Multi-Stage, ARM64)                |
+| Bereich    | Technologie             |
+| ---------- | ----------------------- |
+| Framework  | Next.js 16 (App Router) |
+| Sprache    | TypeScript 5            |
+| UI         | React 19                |
+| Styling    | Tailwind CSS v4         |
+| Fonts      | Geist Sans & Geist Mono |
+| Linting    | ESLint v9 (Flat Config) |
+| Formatting | Prettier                |
+| Deployment | Netlify                 |
 
 ## Lokale Entwicklung
 
@@ -38,39 +39,38 @@ npm run dev   # http://localhost:3000
 
 ## Verfügbare Scripts
 
-| Script          | Beschreibung                      |
-| --------------- | --------------------------------- |
-| `npm run dev`   | Entwicklungsserver mit Hot Reload |
-| `npm run build` | Produktions-Build (Standalone)    |
-| `npm start`     | Produktionsserver starten         |
-| `npm run lint`  | ESLint ausführen                  |
+| Script           | Beschreibung                      |
+| ---------------- | --------------------------------- |
+| `npm run dev`    | Entwicklungsserver mit Hot Reload |
+| `npm run build`  | Produktions-Build                 |
+| `npm start`      | Produktionsserver starten         |
+| `npm run lint`   | ESLint ausführen                  |
+| `npm run format` | Prettier auf gesamtes Projekt     |
 
-## Deployment (Raspberry Pi / ARM64)
+## Deployment (Netlify)
 
-```bash
-# Image für ARM64 bauen
-docker buildx build --platform linux/arm64 -t sn-folio:latest --load .
+### Initiales Setup (einmalig)
 
-# Image exportieren und übertragen
-docker save sn-folio:latest | gzip > sn-folio.tar.gz
-scp sn-folio.tar.gz pi@<PI_IP>:/home/pi/sn-folio/
+1. Unter [app.netlify.com](https://app.netlify.com) einloggen oder registrieren
+2. **"Add new site"** → **"Import an existing project"** → **GitHub** auswählen
+3. Repository `sn-folio` auswählen und Zugriff gewähren
+4. Build-Einstellungen werden automatisch aus `netlify.toml` übernommen:
+    - Build command: `npm run build`
+    - Publish directory: `.next`
+5. **"Deploy site"** klicken
 
-# Auf dem Pi laden und starten
-ssh pi@<PI_IP> "docker load < /home/pi/sn-folio/sn-folio.tar.gz"
-ssh pi@<PI_IP> "cd /home/pi/sn-folio && docker compose -f docker-compose.prod.yml up -d"
-```
+### Automatisches Deployment
 
-Der Produktions-Container läuft auf Port `3000` und als non-root User (`nextjs`, UID 1001).
+Nach dem initialen Setup deployed Netlify automatisch bei jedem Push auf `main`.
 
-## Umgebungsvariablen
+### Umgebungsvariablen
 
 Lokale Overrides in `.env.local` (wird nicht ins Repository committed).
+Produktions-Variablen werden in Netlify unter **Site settings → Environment variables** gesetzt.
 
-| Variable                  | Beschreibung                    | Standard     |
-| ------------------------- | ------------------------------- | ------------ |
-| `NODE_ENV`                | Laufzeitumgebung                | `production` |
-| `PORT`                    | Container-Port                  | `3000`       |
-| `NEXT_TELEMETRY_DISABLED` | Next.js Telemetrie deaktivieren | `1`          |
+| Variable                  | Beschreibung                    |
+| ------------------------- | ------------------------------- |
+| `NEXT_TELEMETRY_DISABLED` | Next.js Telemetrie deaktivieren |
 
 ## Projektstruktur
 
@@ -78,23 +78,27 @@ Lokale Overrides in `.env.local` (wird nicht ins Repository committed).
 sn-folio/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx          # Root Layout, Fonts, Metadaten
-│   │   ├── page.tsx            # Single Page — alle Sektionen
-│   │   └── globals.css         # Tailwind Direktiven
+│   │   ├── impressum/
+│   │   │   └── page.tsx            # Impressum-Seite
+│   │   ├── datenschutz/
+│   │   │   └── page.tsx            # Datenschutzerklärung
+│   │   ├── layout.tsx              # Root Layout, Fonts, Metadaten
+│   │   ├── page.tsx                # Single Page — alle Sektionen
+│   │   └── globals.css             # Tailwind Direktiven
 │   └── components/
 │       └── sections/
-│           ├── Hero.tsx         # Fullscreen Intro mit CTA
-│           ├── About.tsx        # Biografie
-│           ├── Skills.tsx       # Skills-Grid (Frontend/Backend/Tools)
-│           ├── Projects.tsx     # Projekt-Karten
-│           └── Experience.tsx   # Karriere-Timeline
+│           ├── Hero.tsx             # Fullscreen Intro mit CTA
+│           ├── About.tsx            # Biografie
+│           ├── Skills.tsx           # Skills-Grid
+│           ├── Projects.tsx         # Projekt-Karten
+│           ├── Experience.tsx       # Karriere-Timeline
+│           └── Footer.tsx           # Footer mit Links
 ├── public/
 │   └── images/
 │       └── hero.webp
-├── Dockerfile
-├── docker-compose.yml           # Lokale Entwicklung (Port 3005)
-├── docker-compose.prod.yml      # Produktion / ARM64 (Port 3000)
-└── next.config.ts               # output: "standalone"
+├── docker-compose.yml               # Lokale Entwicklung (Port 3005)
+├── netlify.toml                     # Netlify Build-Konfiguration
+└── next.config.ts
 ```
 
 ## Hinweise
@@ -102,4 +106,4 @@ sn-folio/
 - Pfad-Alias `@/` zeigt auf `src/` (konfiguriert in `tsconfig.json`).
 - Nur Dark Theme — kein Light/Dark-Toggle.
 - Alle Inhalte (Name, Projekte, Erfahrungen) sind hardcodiert in den jeweiligen Komponenten.
-- Kein Test-Framework installiert.
+- Prettier läuft automatisch via Husky vor jedem Commit (`lint-staged`).

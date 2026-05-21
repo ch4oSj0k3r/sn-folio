@@ -43,22 +43,11 @@ export default function DatenschutzPage() {
 
                 <section className="mb-10">
                     <h2 className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">
-                        2. Hosting & Server-Logs
+                        2. Hosting
                     </h2>
                     <p className="text-zinc-400 leading-relaxed text-sm">
-                        Diese Website wird auf einem eigenen Server gehostet. Der Hosting-Anbieter
-                        erhebt automatisch sogenannte Server-Log-Dateien, die Ihr Browser
-                        übermittelt. Dazu gehören insbesondere IP-Adresse, Datum und Uhrzeit des
-                        Zugriffs, aufgerufene Seiten, Browsertyp sowie das verwendete
-                        Betriebssystem.
-                    </p>
-                    <p className="text-zinc-400 leading-relaxed text-sm mt-3">
-                        Die Verarbeitung dieser Daten erfolgt zur Gewährleistung eines sicheren und
-                        stabilen Betriebs der Website. Eine Zusammenführung dieser Daten mit anderen
-                        Datenquellen erfolgt nicht.
-                    </p>
-                    <p className="text-zinc-400 leading-relaxed text-sm mt-3">
-                        Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO.
+                        Diese Website wird bei Netlify, Inc. gehostet. Details zur Datenverarbeitung
+                        durch Netlify finden Sie in Abschnitt 6.
                     </p>
                 </section>
 
@@ -97,9 +86,39 @@ export default function DatenschutzPage() {
                     </p>
                 </section>
 
+                <section className="mb-10">
+                    <h2 className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">
+                        6. Hosting durch Netlify
+                    </h2>
+                    <p className="text-zinc-400 leading-relaxed text-sm">
+                        Diese Website wird bei Netlify, Inc., 2325 3rd Street, Suite 296, San
+                        Francisco, CA 94107, USA gehostet.
+                    </p>
+                    <p className="text-zinc-400 leading-relaxed text-sm mt-3">
+                        Beim Aufruf der Website verarbeitet Netlify technisch notwendige Daten,
+                        insbesondere IP-Adressen sowie Server-Log-Dateien, um die Website
+                        bereitzustellen und die Sicherheit und Stabilität des Dienstes zu
+                        gewährleisten.
+                    </p>
+                    <p className="text-zinc-400 leading-relaxed text-sm mt-3">
+                        Weitere Informationen finden Sie in der Datenschutzerklärung von Netlify:{' '}
+                        <a
+                            href="https://www.netlify.com/privacy/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                        >
+                            https://www.netlify.com/privacy/
+                        </a>
+                    </p>
+                    <p className="text-zinc-400 leading-relaxed text-sm mt-3">
+                        Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+                    </p>
+                </section>
+
                 <section>
                     <h2 className="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">
-                        6. Aktualität
+                        7. Aktualität
                     </h2>
                     <p className="text-zinc-400 leading-relaxed text-sm">
                         Diese Datenschutzerklärung ist aktuell gültig. Durch die Weiterentwicklung
