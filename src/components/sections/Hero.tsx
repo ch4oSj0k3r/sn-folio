@@ -47,16 +47,22 @@ export default function Hero() {
                 </p>
                 <div className="flex gap-4">
                     <a
-                        href="#projects"
-                        className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors"
+                        href="#about"
+                        aria-label="Nach unten scrollen"
+                        className="animate-bounce mt-2 text-zinc-400 hover:text-white transition-colors"
                     >
-                        Meine Projekte
-                    </a>
-                    <a
-                        href="#contact"
-                        className="px-6 py-3 rounded-lg border border-zinc-400 hover:border-white text-zinc-300 hover:text-white font-medium transition-colors"
-                    >
-                        Kontakt
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="w-8 h-8"
+                        >
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </a>
                 </div>
             </div>
