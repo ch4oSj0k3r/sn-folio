@@ -5,6 +5,18 @@ const badges = [
     { label: 'E-Government', description: 'Erfahrung im Bereich digitale Verwaltungslösungen' },
 ];
 
+function calculateAge(birthDate: Date): number {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const hasHadBirthdayThisYear =
+        today.getMonth() > birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+    if (!hasHadBirthdayThisYear) age--;
+    return age;
+}
+
+const age = calculateAge(new Date(1991, 10, 19));
+
 export default function About() {
     return (
         <FadeIn>
@@ -12,14 +24,21 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-zinc-100 mb-8">Über mich</h2>
                 <div className="space-y-4 text-zinc-400 text-lg leading-relaxed">
                     <p>
-                        Ich bin ein leidenschaftlicher Web-Entwickler mit Fokus auf moderne,
-                        performante und wartbare Web-Applikationen. Mit mehreren Jahren Erfahrung in
-                        der Softwareentwicklung bringe ich Ideen zum Leben — von der Konzeption bis
-                        zum Deployment.
+                        Hi, ich bin Web-Entwickler mit Fokus auf JavaScript &amp; TypeScript und
+                        entwickle moderne Webanwendungen mit React und Next.js. Ich fühle mich
+                        sowohl im Frontend als auch im Backend zuhause und arbeite gerne an
+                        sauberen, performanten Lösungen – von der UI bis zur API und Datenbank.
                     </p>
                     <p>
-                        Wenn ich nicht code, beschäftige ich mich mit Open-Source-Projekten oder
-                        lerne neue Technologien kennen.
+                        Neben dem klassischen Web-Development bringe ich auch Erfahrung mit PHP und
+                        Symfony mit und beschäftige mich intensiv mit DevOps-Themen wie Docker,
+                        Kubernetes sowie CI/CD mit GitLab und GitHub.
+                    </p>
+                    <p>
+                        Privat bin ich {age} Jahre alt, verheiratet und Vater von zwei kleinen
+                        Söhnen. Wenn ich nicht gerade code, findet man mich meistens beim Darten in
+                        meiner Ligamannschaft, beim Gaming oder vor dem Fernseher – vorzugsweise bei
+                        Fußball, Formel 1 oder Football.
                     </p>
                 </div>
                 <div className="flex flex-wrap gap-3 mt-8">
