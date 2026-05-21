@@ -57,15 +57,15 @@ export default function Projects() {
                                 href={project.href!}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group block rounded-xl border border-zinc-800 hover:border-indigo-500 bg-zinc-900 p-6 transition-colors"
+                                className="group flex flex-col rounded-xl border border-zinc-800 hover:border-indigo-500 bg-zinc-900 p-6 transition-colors"
                             >
                                 <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-indigo-400 transition-colors">
                                     {project.title}
                                 </h3>
-                                <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
+                                <p className="text-zinc-400 text-sm mb-4 leading-relaxed flex-1">
                                     {project.description}
                                 </p>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
