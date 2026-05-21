@@ -1,6 +1,12 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
+    const [typingDone, setTypingDone] = useState(false);
+
     return (
         <section
             id="hero"
@@ -20,15 +26,24 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/55" />
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col items-center bg-black/60 p-8 rounded-4xl">
+            <div className="relative z-10 flex flex-col items-center bg-black/60 p-8 rounded-4xl w-full max-w-2xl">
                 <p className="text-sm font-mono text-zinc-400 mb-4 tracking-widest uppercase">
                     Hallo, ich bin
                 </p>
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
                     Sven Nowitzky
                 </h1>
-                <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl">
-                    Web-Entwickler · Full-Stack · Open-Source-Enthusiast
+                <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl min-h-[2rem]">
+                    <TypeAnimation
+                        sequence={[
+                            'Web-Entwickler · Full-Stack · Open-Source-Enthusiast',
+                            500,
+                            () => setTypingDone(true),
+                        ]}
+                        speed={60}
+                        cursor={!typingDone}
+                        style={{ display: 'inline' }}
+                    />
                 </p>
                 <div className="flex gap-4">
                     <a

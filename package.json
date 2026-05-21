@@ -14,9 +14,11 @@
         "*.{ts,tsx,js,mjs,json,css,md}": "prettier --write"
     },
     "dependencies": {
+        "framer-motion": "^12.39.0",
         "next": "16.2.6",
         "react": "19.2.4",
-        "react-dom": "19.2.4"
+        "react-dom": "19.2.4",
+        "react-type-animation": "^3.2.0"
     },
     "devDependencies": {
         "@netlify/plugin-nextjs": "^5.15.11",

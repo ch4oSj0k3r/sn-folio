@@ -1,3 +1,5 @@
+import FadeIn from '@/components/FadeIn';
+
 const experiences = [
     {
         role: 'Senior Frontend-Developer',
@@ -45,25 +47,27 @@ const experiences = [
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-24 px-6 max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-12">Erfahrung</h2>
-            <div className="relative border-l border-zinc-800 pl-8 space-y-10">
-                {experiences.map((exp) => (
-                    <div key={`${exp.role}-${exp.company}`} className="relative">
-                        <span className="absolute -left-[2.35rem] top-1.5 w-3 h-3 rounded-full bg-indigo-500 border-2 border-zinc-950" />
-                        <p className="text-xs font-mono text-zinc-500 mb-1">{exp.period}</p>
-                        <h3 className="text-lg font-semibold text-zinc-100">{exp.role}</h3>
-                        <p className="text-indigo-400 text-sm mb-2">{exp.company}</p>
-                        {exp.description && (
-                            <ul className="list-disc list-inside text-zinc-400 leading-relaxed">
-                                {exp.description.map((desc, index) => (
-                                    <li key={index}>{desc}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                ))}
-            </div>
-        </section>
+        <FadeIn>
+            <section id="experience" className="py-24 px-6 max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-zinc-100 mb-12">Erfahrung</h2>
+                <div className="relative border-l border-zinc-800 pl-8 space-y-10">
+                    {experiences.map((exp) => (
+                        <div key={`${exp.role}-${exp.company}`} className="relative">
+                            <span className="absolute -left-[2.35rem] top-1.5 w-3 h-3 rounded-full bg-indigo-500 border-2 border-zinc-950" />
+                            <p className="text-xs font-mono text-zinc-500 mb-1">{exp.period}</p>
+                            <h3 className="text-lg font-semibold text-zinc-100">{exp.role}</h3>
+                            <p className="text-indigo-400 text-sm mb-2">{exp.company}</p>
+                            {exp.description && (
+                                <ul className="list-disc list-inside text-zinc-400 leading-relaxed">
+                                    {exp.description.map((desc, index) => (
+                                        <li key={index}>{desc}</li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </FadeIn>
     );
 }
