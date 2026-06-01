@@ -25,9 +25,10 @@ export default function About() {
                 <div className="space-y-4 text-zinc-400 text-lg leading-relaxed">
                     <p>
                         Hi, ich bin Web-Entwickler mit Fokus auf JavaScript &amp; TypeScript und
-                        entwickle moderne Webanwendungen mit React und Next.js. Ich fühle mich
-                        sowohl im Frontend als auch im Backend zuhause und arbeite gerne an
-                        sauberen, performanten Lösungen – von der UI bis zur API und Datenbank.
+                        entwickle moderne Webanwendungen mit React und Next.js. Dabei bewege ich
+                        mich gerne zwischen Frontend und Backend und arbeite an durchdachten,
+                        performanten Lösungen – von der Benutzeroberfläche bis hin zu APIs und
+                        Datenbanken.
                     </p>
                     <p>
                         Neben dem klassischen Web-Development bringe ich auch Erfahrung mit PHP und
@@ -36,9 +37,11 @@ export default function About() {
                     </p>
                     <p>
                         Privat bin ich {age} Jahre alt, verheiratet und Vater von zwei kleinen
-                        Söhnen. Wenn ich nicht gerade code, findet man mich meistens beim Darten in
-                        meiner Ligamannschaft, beim Gaming oder vor dem Fernseher – vorzugsweise bei
-                        Fußball, Formel 1 oder Football.
+                        Söhnen. Einen großen Teil meiner Freizeit verbringe ich mit meiner Familie.
+                        Darüber hinaus spiele ich aktiv Dart in einer Ligamannschaft und verfolge
+                        leidenschaftlich verschiedene Sportarten – insbesondere Fußball, Formel 1
+                        und Football. Für eine Runde Gaming zwischendurch bin ich natürlich
+                        ebenfalls immer zu haben.
                     </p>
                 </div>
                 <div className="flex flex-wrap gap-3 mt-8">
